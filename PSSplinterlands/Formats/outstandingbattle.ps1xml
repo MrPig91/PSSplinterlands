@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.outstandingbattle</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.outstandingbattle</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>opponent_player</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>mana_cap</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>inactive</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>RulesetListFriendly</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>match_type</PropertyName>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
