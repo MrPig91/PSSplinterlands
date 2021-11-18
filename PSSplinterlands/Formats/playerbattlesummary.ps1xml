@@ -51,7 +51,7 @@
                                         
                                         $longestName = ($summoner.TopSummonerMonsters | select @{n="l";e={$_.monster.Name.Length}} | sort l -descending | select -first 1).l
                                         $monsterstring = foreach ($monster in $summoner.TopSummonerMonsters){
-                                            $mAttacks = $stats = ($attackNames | foreach {$attackName=$_;($monster.monster.stats.$_)[$monster.level - 1] | where {$_ -ne 0} |
+                                            $mAttacks = $stats = ($attackNames | foreach {$attackName=$_;($monster.monster.stats.$_)[$monster.monsterlevel - 1] | where {$_ -ne 0} |
                                                 foreach {"$($attackName): $_"}}) -join ", "
                                             if ($mattacks.length -le 9){$mAttacks += ((0.. (9 - $mattacks.length)) | foreach {[char]32}) -join ""}
                                             $mabilities = "A: $(($monster.abilities | foreach {$_}) -join ", ")"
