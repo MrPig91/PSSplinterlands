@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.playerbattlesummary</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.playerbattlesummary</TypeName>
+        </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <PropertyName>PlayerName</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Current Quest</Label>
+                                <ScriptBlock>
+                                    $Esc = [char]27
+                                    switch ($_.currentquest.Completed){
+                                        "True" {$color = "91"; $questStatus = "Completed"}
+                                        "False" {$color = "92"; $questStatus = "In Progess"}
+                                        default {$color = "39"; $questStatus = "Unknown"}
+                                    }
+                                    "$($Esc)[37m$($_.currentquest.QuestType) - $($Esc)[39m$($Esc)[$($color)m$($questStatus)$($Esc)[39m"
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Top Summoners</Label>
+                                <ScriptBlock>
+                                    $Esc = [char]27
+                                    $strings = foreach ($summoner in $_.TopSummoners){
+                                        $sumColor = $summoner.summoner.color
+                                        $color = switch ($sumcolor){
+                                            "Red" {"91"}
+                                            "Green" {"92"}
+                                            "Gold" {"93"}
+                                            "Blue" {94}
+                                            "white" {"97"}
+                                            "Black" {"95"}
+                                            "Gray" {"37"}
+                                            default {"39"}
+                                        }
+                                        $statsNames = "armor","attack","health","magic","ranged","speed"
+                                        $attackNames = "attack","magic","ranged"
+                                        $stats = ($statsNames | foreach {$statName=$_;$summoner.summoner.stats.$_ | where {$_ -ne 0} |
+                                            foreach {"$($statName): $_"}}) -join ", "
+                                        $abilities = $summoner.summoner.stats.abilities -join ","
+                                        $string = "$($Esc)[$($color)m$($summoner.summoner.name) - $($summoner.UsagePercentage)%"
+                                        $string = (($string,$sumcolor,$stats,$abilities | where {-not[string]::isnullorempty($_)}) -join " | ").Trimend(' | ') + "$($Esc)[39m"
+                                        
+                                        $longestName = ($summoner.TopSummonerMonsters | select @{n="l";e={$_.monster.Name.Length}} | sort l -descending | select -first 1).l
+                                        $monsterstring = foreach ($monster in $summoner.TopSummonerMonsters){
+                                            $mAttacks = $stats = ($attackNames | foreach {$attackName=$_;($monster.monster.stats.$_)[$monster.level - 1] | where {$_ -ne 0} |
+                                                foreach {"$($attackName): $_"}}) -join ", "
+                                            if ($mattacks.length -le 9){$mAttacks += ((0.. (9 - $mattacks.length)) | foreach {[char]32}) -join ""}
+                                            $mabilities = "A: $(($monster.abilities | foreach {$_}) -join ", ")"
+                                            $monstername = "`n`t$($monster.monster.name)"
+                                            $monstername += (0.. (($longestName + 1) - ($monstername.length - 2)) | foreach {[char]32}) -join ""
+                                            $monsterLevel = "L: $($monster.monsterlevel)"
+                                            $monsterpercent = "$($monster.UsagePercentage)%"
+                                            $monsterString = (($monstername,$monsterpercent,$monsterLevel,$mattacks,$mabilities | where {-not[string]::isnullorempty($_)}) -join " | ").Trimend(' | ')
+                                            $string += $monsterString
+                                        }
+                                        "$string`n$monsterstring"
+                                    }
+                                    $strings -join "`n"
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Top Monsters</Label>
+                                <ScriptBlock>
+                                    $strings = foreach ($monster in $_.TopMonsters){
+                                        "$($monster.monster.name) - $($monster.UsagePercentage)%"
+                                    }
+                                    $strings -join "`n"
+                                </ScriptBlock>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
