@@ -67,37 +67,34 @@ The following example shows how to your current opponent's battle history summar
 ```Powershell
 Get-slPlayerOutstandingBattle -PlayerName mrpig29 | Get-slPlayerBattleSummary
 
+Top Summoners : Bortus - 36% | Blue | magic: -1
+                        Pirate Archer     | 94% | L: 1 | ranged: 1  | A: Blast
+                        Sea Monster       | 89% | L: 1 | attack: 4  | A: Heal
+                        Furious Chicken   | 67% | L: 1 |            | A:
+                        Crustacean King   | 61% | L: 1 |            | A: Tank Heal
+                        Axemaster         | 39% | L: 1 | ranged: 2  | A: Double Strike
+                        Battering Ram     | 33% | L: 1 | attack: 1  | A: Opportunity
 
-PlayerName    : jj24
-Current Quest : Life - In Progess
-Top Summoners : Drake of Arnak - 22% | Gold | armor: 1
-                        Djinn Chwala        | 91% | L: 1 | attack: 4  | A: Thorns
-                        Furious Chicken     | 55% | L: 1 | attack: 2  | A:
-                        Kobold Miner        | 36% | L: 1 | attack: 3  | A: Sneak
+                Drake of Arnak - 22% | Gold | armor: 1
+                        Djinn Chwala        | 91% | L: 1 | attack: 2  | A: Thorns
+                        Furious Chicken     | 55% | L: 1 |            | A:
+                        Kobold Miner        | 36% | L: 1 | attack: 1  | A: Sneak
                         Flame Monkey        | 27% | L: 1 | attack: 1  | A:
-                        Serpentine Mystic   | 27% | L: 1 | magic: 2   | A: Affliction
-                        Serpentine Spy      | 27% | L: 1 | attack: 4  | A: Opportunity
+                        Serpentine Mystic   | 27% | L: 1 | magic: 1   | A: Affliction
+                        Serpentine Spy      | 27% | L: 1 | attack: 2  | A: Opportunity
 
                 Tyrus Paladium - 14% | White | armor: 1
-                        Shieldbearer          | 71% | L: 1 | attack: 4  | A: Taunt
-                        Armorsmith            | 71% | L: 1 | attack: 3  | A: Repair
-                        Feral Spirit          | 57% | L: 1 | attack: 4  | A: Sneak
-                        Venari Crystalsmith   | 57% | L: 1 | ranged: 3  | A: Tank Heal
+                        Feral Spirit          | 71% | L: 1 | attack: 1  | A: Sneak
+                        Armorsmith            | 57% | L: 1 |            | A: Repair
+                        Shieldbearer          | 57% | L: 1 | attack: 2  | A: Taunt
                         Truthspeaker          | 57% | L: 1 |            | A: Protect
-                        Battering Ram         | 43% | L: 1 | attack: 2  | A: Opportunity
+                        Venari Crystalsmith   | 43% | L: 1 | ranged: 1  | A: Tank Heal
+                        Battering Ram         | 43% | L: 1 | attack: 1  | A: Opportunity
 
-                Zintar Mortalis - 8% | Black | attack: -1
-                        Twisted Jester     | 100% | L: 1 | ranged: 4  | A: Snipe
-                        Death Elemental    | 50% | L: 1 | magic: 2   | A: Snipe
-                        Dark Ferryman      | 50% | L: 1 | ranged: 3  | A:
-                        Harklaw            | 50% | L: 1 | attack: 3  | A: Shield
-                        Shadowy Presence   | 50% | L: 1 |            | A:
-                        Haunted Spirit     | 50% | L: 1 | attack: 4  | A: Heal
-
-Top Monsters  : Furious Chicken - 50%
+Top Monsters  : Furious Chicken - 52%
                 Pirate Archer - 38%
-                Sea Monster - 34%
-                Crustacean King - 24%
-                Battering Ram - 22%
+                Sea Monster - 32%
+                Battering Ram - 24%
+                Crustacean King - 22%
                 Djinn Chwala - 20%
 ```
