@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.balancehistory</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.balancehistory</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader>
+                    <Label>Amount</Label>
+                </TableColumnHeader>
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>player</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>token</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <ScriptBlock>
+                        $Esc = [char]27
+                        $color = switch ($_.amount){
+                            {$_ -lt 0} {"91"}
+                            {$_ -gt 0} {"92"}
+                            default {"39"}
+                        }
+                        "$($Esc)[$($color)m$($_.amount)$($Esc)[39m"
+                    </ScriptBlock>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>type</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>balance_end</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>block_num</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>created_date</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>counterparty</PropertyName>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
