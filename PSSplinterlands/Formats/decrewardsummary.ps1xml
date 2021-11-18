@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.decrewardsummary</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.decrewardsummary</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+                <TableColumnHeader />
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>RewardType</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>RewardCount</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>AvgReward</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>AvgDailyDEC</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>AvgRewardsPerDay</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>Total</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>TotalDays</PropertyName>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
