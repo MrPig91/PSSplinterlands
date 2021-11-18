@@ -119,7 +119,7 @@ function Get-slBalanceHistory {
         try{
             $Body = @{
                 username    = $UserName
-                token_type  = $TokenType
+                token_type  = $TokenType.ToUpper()
                 offset      = $Offset
                 limit       = $Limit
             }
