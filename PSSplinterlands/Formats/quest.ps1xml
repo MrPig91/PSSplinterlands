@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.quest</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.quest</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader>
+                    <Label>Player</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Quest Type</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Total Items</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Completed Items</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Reward Count</Label>
+                </TableColumnHeader>            
+                <TableColumnHeader>
+                    <Label>Completed</Label>
+                </TableColumnHeader>
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>Player</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>QuestType</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>total_items</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>completed_items</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>reward_qty</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <ScriptBlock>
+                    $Esc = [char]27
+                    $color = switch ($_.Completed){
+                        "True" {"92"}
+                        "False" {"91"}
+                        default {"39"}
+                    }
+                    "$($Esc)[$($color)m$($_.Completed)$($Esc)[39m"
+                    </ScriptBlock>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
