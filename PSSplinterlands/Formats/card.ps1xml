@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.card</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.card</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader>
+                    <Label>ID</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Name</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Type</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Color</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Rarity</Label>
+                </TableColumnHeader>            
+                <TableColumnHeader>
+                    <Label>EditionName</Label>
+                    <Alignment>Center</Alignment>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Circulation</Label>
+                </TableColumnHeader>
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>id</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>Name</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>Type</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                <ScriptBlock>
+                  $Esc = [char]27
+                  $color = switch ($_.Color){
+                      "Red" {"91"}
+                      "Green" {"92"}
+                      "Gold" {"93"}
+                      "Blue" {94}
+                      "white" {"97"}
+                      "Black" {"95"}
+                      "Gray" {"37"}
+                      default {"39"}
+                  }
+                "$($Esc)[$($color)m$($_.color)$($Esc)[39m"
+                </ScriptBlock>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>RarityName</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>EditionName</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <ScriptBlock>
+                        $Esc = [char]27
+                        $gold = ($_.distribution | where {$_.Gold} | measure -Property num_cards -Sum).Sum.ToString("n0")
+                        $regular = ($_.distribution | where {-not$_.Gold} | measure -Property num_cards -Sum).Sum.ToString("n0")
+                        "{$($Esc)[37m$($regular)$($Esc)[39m, $($Esc)[93m$($gold)$($Esc)[39m}"
+                    </ScriptBlock>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
