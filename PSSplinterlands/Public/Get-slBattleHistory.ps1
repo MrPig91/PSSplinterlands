@@ -20,8 +20,8 @@ function Get-slBattleHistory {
             $battle | Add-Member -NotePropertyMembers @{
                 Player = $PlayerName
                 Enemty = $Enemy
-                PlayerTeam = $Teams | where player -eq $PlayerName
-                EnemyTeam = $Teams | where player -eq $Enemy
+                PlayerTeam = $Teams | Where-Object player -eq $PlayerName
+                EnemyTeam = $Teams | Where-Object player -eq $Enemy
             }
             $battle
         }
