@@ -28,11 +28,11 @@ function Get-slDECRewardsSummary {
                 $groupbyDay = $decRewards | Group-Object -Property {
                     $_.created_date.ToShortDateString()
                 }
-                $firstandLastDate = $decRewards | sort created_date | select -First 1 -Last 1
+                $firstandLastDate = $decRewards | Sort-Object created_date | Select-Object -First 1 -Last 1
                 if (($firstandLastDate | Measure-Object).Count -eq 2){
                     $dateRange = New-TimeSpan -Start $firstandLastDate[0].created_date -End $firstandLastDate[1].created_date -ErrorAction SilentlyContinue
-                    $averageGamesperDay = [math]::round(($groupbyDay | Measure -Property Count -Sum).Sum / $dateRange.Days)
-                    $averageDailyEarned = [math]::round(($groupbyDay.Group | Measure -Property amount -Sum).Sum / $dateRange.Days)
+                    $averageGamesperDay = [math]::round(($groupbyDay | Measure-Object -Property Count -Sum).Sum / $dateRange.Days)
+                    $averageDailyEarned = [math]::round(($groupbyDay.Group | Measure-Object -Property amount -Sum).Sum / $dateRange.Days)
                 }
     
                 $rewardTypeName = switch ($type){
@@ -71,11 +71,11 @@ function Get-slDECRewardsSummary {
         $groupbyDay = $decRewards | Group-Object -Property {
             $_.created_date.ToShortDateString()
         }
-        $firstandLastDate = $decRewards | sort created_date | select -First 1 -Last 1
+        $firstandLastDate = $decRewards | Sort-Object created_date | Select-Object -First 1 -Last 1
         if (($firstandLastDate | Measure-Object).Count -eq 2){
             $dateRange = New-TimeSpan -Start $firstandLastDate[0].created_date -End $firstandLastDate[1].created_date -ErrorAction SilentlyContinue
-            $averageGamesperDay = [math]::round(($groupbyDay | Measure -Property Count -Sum).Sum / $dateRange.Days)
-            $averageDailyEarned = [math]::round(($groupbyDay.Group | Measure -Property amount -Sum).Sum / $dateRange.Days)
+            $averageGamesperDay = [math]::round(($groupbyDay | Measure-Object -Property Count -Sum).Sum / $dateRange.Days)
+            $averageDailyEarned = [math]::round(($groupbyDay.Group | Measure-Object -Property amount -Sum).Sum / $dateRange.Days)
         }
 
         [PSCustomObject]@{
