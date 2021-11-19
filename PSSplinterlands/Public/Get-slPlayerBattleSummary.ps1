@@ -16,19 +16,19 @@ function Get-slPlayerBattleSummary {
         $battleCount = ($recentBattles | Measure-Object).Count
         $playerQuest = Get-slPlayersQuest -PlayerName $PlayerName
 
-        $top3Summoners = $recentBattles.PlayerTeam | where color -notin $IgnoreColorsList | Select-Object -ExpandProperty summoner |
+        $top3Summoners = $recentBattles.PlayerTeam | Where-Object color -notin $IgnoreColorsList | Select-Object -ExpandProperty summoner |
             Group-Object card_detail_id | Sort-Object Count -Descending | Select-Object -First 3
         $summonerUsage = foreach ($summoner in $top3Summoners){
-            $summonerDetails = $allCards | where Id -eq $summoner.Name
+            $summonerDetails = $allCards | Where-Object Id -eq $summoner.Name
             $sPercentage = [math]::round(($summoner.count / $battleCount * 100))
             $summonerLevel = $summoner.group | Select-Object -First 1 -ExpandProperty level
 
-            $summonerBattles = $recentBattles | where {$_.PlayerTeam.Summoner.card_detail_id -eq $summoner.name}
+            $summonerBattles = $recentBattles | Where-Object {$_.PlayerTeam.Summoner.card_detail_id -eq $summoner.name}
             $summonerBattleCount = ($summonerBattles | Measure-Object).Count
             $top6SummonerMonsters = $summonerBattles.PlayerTeam.monsters | Group-Object card_detail_id |
             Sort-Object Count -Descending | Select-Object -First 6
             $TopSummonerMonsters = foreach ($monster in $top6SummonerMonsters){
-                $monsterDetails = $allCards | where Id -eq $monster.Name
+                $monsterDetails = $allCards | Where-Object Id -eq $monster.Name
                 $monsterLevel = $monster.group | Select-Object -First 1 -ExpandProperty level
                 $mPercentage = [math]::round(($monster.count / $summonerBattleCount * 100))
                 [PSCustomObject]@{
@@ -51,7 +51,7 @@ function Get-slPlayerBattleSummary {
             Sort-Object Count -Descending | Select-Object -First 6
         $monsterUsage = foreach ($monster in $top6Monsters){
             $monsterLevel = $monster.group | Select-Object -First 1 -ExpandProperty level
-            $monsterDetails = $allCards | where Id -eq $Monster.Name
+            $monsterDetails = $allCards | Where-Object Id -eq $Monster.Name
             $mPercentage = [math]::round(($monster.count / $battleCount * 100))
             [PSCustomObject]@{
                 Monster = $monsterDetails
