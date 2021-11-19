@@ -10,7 +10,7 @@ function Get-slCardCollection {
         $Uri = "https://api.splinterlands.io/cards/collection/$PlayerName"
         $Collection = Invoke-SplinterlandsAPI -Uri $Uri
         $Collection.cards | ForEach-Object {
-            Add-Member -InputObject $_ -TypeName "splinterlands.card"
+            Add-Member -InputObject $_ -TypeName "splinterlands.playercard"
             try{
                 $_.last_used_date = [datetime]::Parse($_.last_used_date)
             }
