@@ -20,7 +20,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 ## Donate
 If you find this module useful and want to donate my hive account is below
 
-Hive account: mrpig29
+Hive/splinterlands account: mrpig29
 
 ## Getting DEC Rewards Summary
 You can quickly get a summary of DEC rewards (battle, daily quest, and seasonal chest) by running the command below.
@@ -36,7 +36,7 @@ All        654         5.99      135         23               3914.879 29
 ```
 
 ## Getting Transactions
-Shown below are a couple examples of using the `Get-slBalanceHistory` function, which gets transaction within the last 30 days (API restriction).
+Shown below are a couple examples of using the `Get-slBalanceHistory` function, which gets transactions within the last 30 days (API restriction).
 
 Getting SPS claimed staking rewwards transactions.
 ```Powershell
@@ -64,7 +64,7 @@ mrpig29 DEC   -3      market_rental 7389.857    58941763  11/6/2021 10:12:36 AM 
 ```
 
 ## Getting Opponent Battle History Summary
-The following example shows how to your current opponent's battle history summary. Please note, you must currently be in a battle for this command to work. Sometimes you might need to run it again if it fails the first time.
+The following example shows how to get your current opponent's battle history summary. Please note, you must currently be in a battle for this command to work. Sometimes you might need to run it again if it fails the first time.
 ```Powershell
 Get-slPlayerOutstandingBattle -PlayerName mrpig29 | Get-slPlayerBattleSummary
 
