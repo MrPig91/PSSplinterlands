@@ -15,7 +15,7 @@ $privateFuncFolderPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "$modu
 Write-Host "Public folder path $publicFuncFolderPath"
 Write-Host "Path exists: $(Test-Path -Path $publicFuncFolderPath)"
 $PublicFunctions = Get-ChildItem -Path $publicFuncFolderPath | Get-Content
-$FunctionsToExport = (Get-ChildItem -Path $publicFuncFolderPath | select -ExpandProperty BaseName) -join ", "
+$FunctionsToExport = (Get-ChildItem -Path $publicFuncFolderPath | Select-Object -ExpandProperty BaseName) -join ", "
 $PrivateFunctions = Get-ChildItem -Path $privateFuncFolderPath -Recurse -File | Get-Content
 
 

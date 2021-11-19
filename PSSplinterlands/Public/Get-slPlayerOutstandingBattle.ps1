@@ -13,7 +13,7 @@ function Get-slPlayerOutstandingBattle {
             if ($Battle -ne "null"){
                 $Battle | Add-Member -TypeName "splinterlands.outstandingbattle"
 
-                $rulesetList = $Battle.ruleset -split "\|" | where {-not[string]::IsNullOrWhiteSpace($_)}
+                $rulesetList = $Battle.ruleset -split "\|" | Where-Object {-not[string]::IsNullOrWhiteSpace($_)}
                 $Battle | Add-Member -NotePropertyMembers @{
                     "RulesetList" = $rulesetList
                     "RulesetListFriendly" = ($rulesetList | Resolve-slRuleset)
