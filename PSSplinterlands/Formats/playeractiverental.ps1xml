@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+        <Name>splinterlands.playeractiverental</Name>
+        <ViewSelectedBy>
+            <TypeName>splinterlands.playeractiverental</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+            <TableHeaders>
+                <TableColumnHeader>
+                    <Label>Card Id</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Rental Date</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Daily Price</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Rental Days</Label>
+                </TableColumnHeader>
+                <TableColumnHeader>
+                    <Label>Total Paid</Label>
+                </TableColumnHeader>            
+                <TableColumnHeader>
+                    <Label>Cancelled</Label>
+                </TableColumnHeader>
+            </TableHeaders>
+            <TableRowEntries>
+            <TableRowEntry>
+                <TableColumnItems>
+                <TableColumnItem>
+                    <PropertyName>card_detail_id</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>rental_date</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>buy_price</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>rental_days</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>paid_amount</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                    <PropertyName>Cancelled</PropertyName>
+                </TableColumnItem>
+                </TableColumnItems>
+            </TableRowEntry>
+            </TableRowEntries>
+        </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
