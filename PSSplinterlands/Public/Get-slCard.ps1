@@ -1,7 +1,7 @@
 function Get-slCard {
     [CmdletBinding()]
     param(
-        [int]$Id
+        [int[]]$Id = 0.. [int]::MaxValue
     )
 
     try{
@@ -13,7 +13,7 @@ function Get-slCard {
                     RarityName = Resolve-slRarity $card.Rarity
                     EditionName = ($card.editions -split "," | Resolve-slEdition)
                 }
-                $card
+                $card | Where-Object id -in $Id
             }
         }
     }
