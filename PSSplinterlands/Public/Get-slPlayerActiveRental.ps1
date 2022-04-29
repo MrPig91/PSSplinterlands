@@ -5,12 +5,14 @@ function Get-slPlayerActiveRental {
         [string[]]$PlayerName,
         [Parameter()]
         [ValidateSet("renter","owner")]
-        [string]$PlayerType = "renter"
+        [string]$PlayerType = "owner",
+
+        [int]$Limit = 50
     )
 
     Process{
         foreach ($player in $PlayerName){
-            $Rentals = Invoke-SplinterlandsAPI -Uri "https://api2.splinterlands.com/market/active_rentals?$PlayerType=$player"
+            $Rentals = Invoke-SplinterlandsAPI -Uri "https://api2.splinterlands.com/market/active_rentals?$PlayerType=$player&limit=$Limit"
             foreach ($rental in $Rentals){
                 try{
                     $rental.rental_date = [datetime]::Parse($rental.rental_date)
